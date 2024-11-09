@@ -170,7 +170,6 @@ max_ans = 35
 def compute_metrics(slogits, elogits, components, exes):
     exe_to_comp = collections.defaultdict(list)
     for idx, feature in enumerate(components): 
-        print(feature)
         exe_to_comp[feature["example_id"]].append(idx)
     
     predict = []
@@ -213,10 +212,10 @@ def compute_metrics(slogits, elogits, components, exes):
 train_dataset.set_format("torch")
 valid = validation_dataset.remove_columns(["example_id", "offset_mapping"])
 valid.set_format("torch")
-test_WER44 = test_WER44.remove_columns(["example_id", "offset_mapping"])
-test_WER44.set_format("torch")
-test_WER54 = test_WER54.remove_columns(["example_id", "offset_mapping"])
-test_WER54.set_format("torch")
+test_WER44_mod = test_WER44.remove_columns(["example_id", "offset_mapping"])
+test_WER44_mod.set_format("torch")
+test_WER54_mod = test_WER54.remove_columns(["example_id", "offset_mapping"])
+test_WER54_mod.set_format("torch")
 
 print("Training Dataloader : ")
 train_dataloader = DataLoader(
@@ -228,9 +227,9 @@ train_dataloader = DataLoader(
 
 eval_dataloader = DataLoader( valid, collate_fn=default_data_collator, batch_size=8 )
 
-test_WER44_dataloader = DataLoader( test_WER44, collate_fn=default_data_collator, batch_size=8 )
+test_WER44_dataloader = DataLoader( test_WER44_mod, collate_fn=default_data_collator, batch_size=8 )
 
-test_WER54_dataloader = DataLoader( test_WER54, collate_fn=default_data_collator, batch_size=8 )
+test_WER54_dataloader = DataLoader( test_WER54_mod, collate_fn=default_data_collator, batch_size=8 )
 
 output_dir = "bert-base-uncased-finetuned-spoken-squad"
 
