@@ -3,8 +3,7 @@ from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from transformers import AutoTokenizer, AutoModel, AutoModelForQuestionAnswering, default_data_collator, get_scheduler
 from datasets import load_dataset
-from accelerate import Accelerator, notebook_launcher
-from huggingface_hub import Repository, get_full_repo_name, notebook_login
+from accelerate import Accelerator
 import evaluate
 from tqdm.auto import tqdm
 import numpy as np
@@ -301,7 +300,7 @@ test = evaluate_model(model, eval_dataloader, validation_dataset, spoken_squad_d
 print("Computing Test V1 : ")
 test_v1 = evaluate_model(model, test_WER44_dataloader, test_WER44, spoken_squad_dataset['test_WER44'])
 print("Computing Test V2 : ")
-test_v2 = evaluate_model(model, test_WER54_dataloader, test_WER54_dataset, spoken_squad_dataset['test_WER54'])
+test_v2 = evaluate_model(model, test_WER54_dataloader, test_WER54, spoken_squad_dataset['test_WER54'])
 
 print("************** OUTPUT **************")
 print("Test     - best match: " + str(test['exact_match']) + ", computed F1 Value: " + str(test['f1']))
