@@ -18,6 +18,6 @@ The model is evaluated on three versions of the Spoken-SQuAD dataset, reflecting
 
 ### Results :
 
-- **Test Set (NO NOISE - 22.73% WER)** - Exact Match: 64.23%, F1 Score: 74.29%
-- **Test V1 Set (V1 NOISE - 44.22% WER)** - Exact Match: 40.72%, F1 Score: 54.94%
-- **Test V2 Set (V2 NOISE - 54.82% WER)** - Exact Match: 28.50%, F1 Score: 41.41%
+- **Test**     - best match: 62.02, computed F1 Value: 72.67
+- **Test V1**  - best match: 39.02, computed F1 Value: 53.87
+- **Test V2**  - best match: 27.73, computed F1 Value: 41.52
